@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import RootNavigations from '../../navigators/RootNavigations';
+import Loader from '../Commons/Loader';
 import { connect } from 'react-redux';
 import Api from '../../util/Api';
 
@@ -15,7 +16,7 @@ const Root = ({ cryptocurrencies, _getInitialData }) => {
   const [loading, setLoading] = useState(true);
 
   if (loading) {
-    return null;
+    return <Loader />;
   }
 
   return <RootNavigations />;
