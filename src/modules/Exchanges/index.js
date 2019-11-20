@@ -1,12 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import EmptyScreen from '../Commons/EmptyScreen';
 
 const Exchanges = () => {
-  return (
-    <View>
-      <Text>sdads</Text>
-    </View>
-  );
+  return <EmptyScreen />;
 };
 
 export default Exchanges;

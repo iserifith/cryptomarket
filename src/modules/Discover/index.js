@@ -1,12 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import EmptyScreen from '../Commons/EmptyScreen';
 
 const Discover = () => {
-  return (
-    <View>
-      <Text>Discover</Text>
-    </View>
-  );
+  return <EmptyScreen />;
 };
 
 export default Discover;

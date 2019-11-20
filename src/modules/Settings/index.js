@@ -1,12 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import EmptyScreen from '../Commons/EmptyScreen';
 
 const Settings = () => {
-  return (
-    <View>
-      <Text>Settings</Text>
-    </View>
-  );
+  return <EmptyScreen />;
 };
 
 export default Settings;
