@@ -1,0 +1,16 @@
+react-navigation
+react-native-gesture-handler
+react-navigation-stack
+
+
+redux
+react-redux
+redux-persist
+redux-thunk
+axios
+normalizr
+
+@react-native-community/async-storage
+react-native-modal
+react-native-reanimated
+react-native-spinkit@latest
