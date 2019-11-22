@@ -10,7 +10,12 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { hp, wp, moneyFormat, round } from '_util';
 
-const ListSection = ({ data, _addToFavourites, _removeFromFavourites }) => {
+const ListSection = ({
+  data,
+  _addToFavourites,
+  _removeFromFavourites,
+  _favourites,
+}) => {
   const toggleFavourites = item => {
     if (item.favourite) {
       _removeFromFavourites(item.id);
@@ -49,8 +54,8 @@ const ListSection = ({ data, _addToFavourites, _removeFromFavourites }) => {
             onPress={() => toggleFavourites(item)}
             style={styles.favButton}>
             <FontAwesome
-              name={item.favourite ? 'star' : 'star-o'}
-              color={item.favourite ? 'blue' : 'black'}
+              name={_favourites.includes(item.id) ? 'star' : 'star-o'}
+              color={_favourites.includes(item.id) ? 'blue' : 'black'}
               size={15}
             />
           </TouchableOpacity>
