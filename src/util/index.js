@@ -1,4 +1,5 @@
 export * from './responsive';
+export { default as usePrevious } from './usePrevious';
 
 // https://www.jacklmoore.com/notes/rounding-in-javascript/
 export const round = (v, d) => {

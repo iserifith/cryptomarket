@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { hp, wp, moneyFormat, round } from '_util';
+import React from 'react';
+import { FlatList, View, StyleSheet } from 'react-native';
+import ListItem from './ListItem';
+
+const Seperator = () => <View style={styles.separator} />;
 
 const ListSection = ({
   data,
@@ -29,78 +23,24 @@ const ListSection = ({
       data={data}
       initialNumToRender={15}
       keyExtractor={item => item.id.toString()}
+      ItemSeparatorComponent={Seperator}
       renderItem={({ item }) => (
-        <View style={styles.itemContainer}>
-          <TouchableOpacity style={styles.itemButtonContainer}>
-            <Image
-              style={styles.itemButtonLogo}
-              source={{ uri: item.metadata.logo }}
-            />
-
-            <View>
-              <Text>{item.name}</Text>
-              <Text>{item.symbol}</Text>
-            </View>
-          </TouchableOpacity>
-          <View style={styles.infoContainer}>
-            <Text style={styles.price}>
-              ${round(item.market.quote.USD.price, 5)}
-            </Text>
-            <Text style={styles.market_cap}>
-              ${moneyFormat(item.market.quote.USD.market_cap)}
-            </Text>
-          </View>
-          <TouchableOpacity
-            onPress={() => toggleFavourites(item)}
-            style={styles.favButton}>
-            <FontAwesome
-              name={_favourites.includes(item.id) ? 'star' : 'star-o'}
-              color={_favourites.includes(item.id) ? 'blue' : 'black'}
-              size={15}
-            />
-          </TouchableOpacity>
-        </View>
+        <ListItem
+          _favourites={_favourites}
+          toggleFavourites={toggleFavourites}
+          item={item}
+        />
       )}
     />
   );
 };
 
 const styles = StyleSheet.create({
-  itemContainer: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#d7dbe0',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  itemButtonContainer: {
-    display: 'flex',
-    width: wp(60),
-    flexDirection: 'row',
-    paddingVertical: 10,
-  },
-  itemButtonLogo: {
-    marginHorizontal: 10,
-    width: 40,
-    height: 40,
-  },
-  itemButtonText: {},
-  infoContainer: {
-    width: wp(30),
-    justifyContent: 'center',
-    paddingHorizontal: 5,
-    alignItems: 'flex-end',
-  },
-  price: {
-    fontWeight: 'bold',
-  },
-  market_cap: {
-    color: '#6e7175',
-  },
-  favButton: {
+  seperator: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 1,
+    backgroundColor: '#e4e4e4',
+    marginLeft: 10,
   },
 });
 

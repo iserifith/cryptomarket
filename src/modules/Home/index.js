@@ -1,17 +1,7 @@
-import React, { useState } from 'react';
-import {
-  Alert,
-  TouchableOpacity,
-  LayoutAnimation,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import HorizontalText from './HorizontalText';
 import HomeNavigator from './HomeNavigator';
-import { hp, wp } from '../../util';
 
 const Home = ({ navigation }) => {
   return (
