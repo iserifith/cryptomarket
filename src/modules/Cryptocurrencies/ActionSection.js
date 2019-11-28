@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   View,
   Text,
-  FlatList,
   StyleSheet,
   TouchableOpacity,
-  Image,
   ScrollView,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { hp, wp } from '_util';
 import Modal from 'react-native-modal';
+import Context from './Context';
 
-const ActionSection = ({
-  showFavouritesOnly,
-  setshowFavouritesOnly,
-  showCryptoType,
-  setshowCryptoType,
-  sortByPrice,
-  setSortByPrice,
-}) => {
+const ActionSection = () => {
+  const {
+    showFavouritesOnly,
+    setshowFavouritesOnly,
+    showCryptoType,
+    setshowCryptoType,
+    sortByPrice,
+    setSortByPrice,
+  } = useContext(Context);
+
   const toggleFavSort = () => {
     showFavouritesOnly
       ? setshowFavouritesOnly(false)

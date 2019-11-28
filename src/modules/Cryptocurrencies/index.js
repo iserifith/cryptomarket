@@ -5,6 +5,7 @@ import { hp, wp } from '_util';
 import ActionSection from './ActionSection';
 import ListSection from './ListSection';
 import usePrevious from '../../util/usePrevious';
+import Context from './Context';
 
 const Cryptocurrencies = ({
   _data,
@@ -77,24 +78,24 @@ const Cryptocurrencies = ({
   }, [_data, _favourites, showFavouritesOnly, showCryptoType, sortByPrice]);
 
   return (
-    <View style={styles.container}>
-      <ActionSection
-        sortByPrice={sortByPrice}
-        setSortByPrice={setSortByPrice}
-        showCryptoType={showCryptoType}
-        setshowCryptoType={setshowCryptoType}
-        showFavouritesOnly={showFavouritesOnly}
-        setshowFavouritesOnly={setshowFavouritesOnly}
-      />
-      <ListSection
-        showFavouritesOnly={showFavouritesOnly}
-        showCryptoType={showCryptoType}
-        data={data}
-        _addToFavourites={_addToFavourites}
-        _removeFromFavourites={_removeFromFavourites}
-        _favourites={_favourites}
-      />
-    </View>
+    <Context.Provider
+      value={{
+        sortByPrice,
+        setSortByPrice,
+        showCryptoType,
+        setshowCryptoType,
+        showFavouritesOnly,
+        setshowFavouritesOnly,
+        data,
+        _addToFavourites,
+        _removeFromFavourites,
+        _favourites,
+      }}>
+      <View style={styles.container}>
+        <ActionSection />
+        <ListSection />
+      </View>
+    </Context.Provider>
   );
 };
 

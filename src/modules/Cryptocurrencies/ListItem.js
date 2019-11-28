@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import FastImage from 'react-native-fast-image';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { hp, wp, moneyFormat, round } from '_util';
+import { wp, moneyFormat, round } from '_util';
+import Context from './Context';
 
 const LeftActions = (progress, dragX) => {
   return (
@@ -20,7 +15,9 @@ const LeftActions = (progress, dragX) => {
   );
 };
 
-const ListItem = ({ item, _favourites, toggleFavourites }) => {
+const ListItem = ({ item, toggleFavourites }) => {
+  const { _favourites } = useContext(Context);
+
   return (
     // <Swipeable renderLeftActions={LeftActions}>
     <View style={styles.itemContainer}>

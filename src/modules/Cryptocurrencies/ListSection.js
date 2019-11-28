@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import ListItem from './ListItem';
+import Context from './Context';
 
 const Seperator = () => <View style={styles.separator} />;
 
-const ListSection = ({
-  data,
-  _addToFavourites,
-  _removeFromFavourites,
-  _favourites,
-}) => {
+const ListSection = () => {
+  const { data, _addToFavourites, _removeFromFavourites } = useContext(Context);
+
   const toggleFavourites = item => {
     if (item.favourite) {
       _removeFromFavourites(item.id);
@@ -25,11 +23,7 @@ const ListSection = ({
       keyExtractor={item => item.id.toString()}
       ItemSeparatorComponent={Seperator}
       renderItem={({ item }) => (
-        <ListItem
-          _favourites={_favourites}
-          toggleFavourites={toggleFavourites}
-          item={item}
-        />
+        <ListItem toggleFavourites={toggleFavourites} item={item} />
       )}
     />
   );
